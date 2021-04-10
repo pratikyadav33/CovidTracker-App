@@ -1,15 +1,13 @@
 package com.example.covidtracker
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    val flag: ImageView = findViewById(R.id.flag)
-    val spinner : Spinner=findViewById(R.id.spinner)
-    val stat : Button = findViewById(R.id.stat)
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,5 +15,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+
+        var stat : Button = findViewById(R.id.stat)
+
+        var call : Button = findViewById(R.id.button)
+
+        call.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:"+"+911123978046")
+            startActivity(intent)
+        }
+
+        stat.setOnClickListener{
+            val intent = Intent(this@MainActivity, Statistics::class.java)
+            startActivity(intent)
+        }
+
+
     }
+
 }
+
+
